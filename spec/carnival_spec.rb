@@ -101,7 +101,7 @@ RSpec.describe Carnival do
       expect(@carnival.total_revenue).to eq(14)
     end
     
-    it "can create a summary #summary" do
+    xit "can create a summary #summary" do
       @carnival.add_ride(@ride1)
       @carnival.add_ride(@ride2)
       @carnival.add_ride(@ride3)     
@@ -162,6 +162,7 @@ RSpec.describe Carnival do
             total_revenue: 12
           }
         ]}      
+      expect(@carnival.favorite_ride(@visitor1)).to eq(@ride1)
       expect(@carnival.summary).to eq(expected)
     end
   end

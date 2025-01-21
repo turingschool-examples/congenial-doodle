@@ -33,11 +33,24 @@ class Carnival
     visitors = []
     rides = []
     @rides.each do |ride| 
-      visitors << ride.rider_log.keys
+      ride.rider_log.keys.each {|rider, count| visitors << rider}
       rides << ride
     end
-    carnival_summary[:visitors_count] = visitors.uniq.count
+
+    visitors.uniq do |visitor| 
+      carnival_summary[visitors] << {visitor: visitor, favorite_ride: favorite_ride(visitor)}
+    end
+    carnival_summary[:visitor_count] = visitors.uniq.count
     carnival_summary[:revenue_earned] = total_revenue
+  end
+
+  def favorite_ride(visitor)
+    favorite = nil
+    @rides.each do |ride|
+      binding.pry
+      ride.rider_log[visitor]
+    end
     binding.pry
+    favorite
   end
 end
