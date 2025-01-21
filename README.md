@@ -1,6 +1,7 @@
 # Carnival
 
 ## Instructions
+
 * Fork this Repository
 * Clone your forked repo
 * Complete the activity Below
@@ -18,9 +19,7 @@ Graded Items:
 2. Visitors have `preferences` and can list those preferences
 3. Visitors can check if they are tall enough for rides based on a given height threshold (height given in inches)
 
-
 Use TDD to create a `Visitor` class that responds to the following interaction pattern:
-
 
 ```ruby
 pry(main)> require './lib/visitor'
@@ -75,7 +74,7 @@ Graded Items:
 1. Create a Ride with attributes and a way to read that data
 2. Rides have a rider log that tracks who has ridden the ride and how many times
 3. A rider's spending money is reduced by the admission fee when they board a ride
-4. A rider does not board if they are not tall enough or do not have a matching preference for the ride's excitement level or do not have enough spending money left. 
+4. A rider does not board if they are not tall enough or do not have a matching preference for the ride's excitement level or do not have enough spending money left.
 5. A ride can calculate the total revenue it has earned
 
 Use TDD to create a `Ride` class that responds to the following interaction pattern:
@@ -181,9 +180,9 @@ Use TDD to create a `Carnival` class that adds the following functionality:
 
 Additionally, use TDD to add the following functionality to the `Carnival` class. A passing challenge will complete *at least* two of the following. We recommend completing all three if you have time.
 
-1. A carnival can tell us its most popular ride. Most popular will be the ride that has been riden the most amount of times by all visitors (not based on unique riders).
-1. A carnival can tell us its most profitable ride
-1. A carnival can calculate the total revenue earned from all its rides.
+1. A carnival can tell us its most popular ride. Most popular will be the ride that has been ridden the most amount of times by all visitors (not based on unique riders).
+2. A carnival can tell us its most profitable ride
+3. A carnival can calculate the total revenue earned from all its rides.
 
 | Method Name             | Return Value |
 |-------------            |--------------|
@@ -195,20 +194,21 @@ Additionally, use TDD to add the following functionality to the `Carnival` class
 | `total_revenue`         | integer |
 
 ## Iteration 4
+
 1. A carnival can provide a summary hash that includes:
    * Visitor count
    * Revenue earned
    * List of visitors and each visitor's favorite ride and how much total money a visitor spent
    * List of rides and who rode each ride and the ride's total revenue
-1. The Carnival class can calculate the total revenue of all carnivals. Make sure that your test includes multiple carnivals, each with multiple rides.
+2. The Carnival class can calculate the total revenue of all carnivals. Make sure that your test includes multiple carnivals, each with multiple rides.
 
 | Method Name             | Return Value |
 |-------------            |--------------|
 | `summary`               | `Hash` (see below) |
 | `Carnival.total_revenues` <- note: this is a class method | integer |
 
-
 summary hash structure:
+
 ```ruby
 {
   visitor_count: integer, 
