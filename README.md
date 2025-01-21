@@ -18,9 +18,7 @@ Graded Items:
 2. Visitors have `preferences` and can list those preferences
 3. Visitors can check if they are tall enough for rides based on a given height threshold (height given in inches)
 
-
 Use TDD to create a `Visitor` class that responds to the following interaction pattern:
-
 
 ```ruby
 pry(main)> require './lib/visitor'
@@ -65,7 +63,6 @@ pry(main)> visitor3.tall_enough?(54)
 
 pry(main)> visitor1.tall_enough?(64)
 #=> false
-
 ```
 
 ## Iteration 2 - Rides
@@ -179,11 +176,100 @@ Use TDD to create a `Carnival` class that adds the following functionality:
 1. Each carnival has a duration, as well as a way to read that data
 2. Each carnival can add rides and can list those rides.
 
+Use TDD to create a `Carnival` class that responds to the following interaction pattern:
+
+```ruby
+pry(main)> require './lib/carnival'
+#=> true
+
+pry(main)> require './lib/ride'
+#=> true
+
+pry(main)> carnival = Carnival.new(14)
+#=> #<Carnival:0x000000015a136ab8 @duration=14, @rides=[]>
+
+pry(main)> carnival.duration
+#=> 14
+
+pry(main)> carnival.rides
+#=> []
+
+pry(main)> ride1 = Ride.new({ name: 'Carousel', min_height: 24, admission_fee: 1, excitement: :gentle })
+#=> #<Ride:0x000000015a136ab8 @admission_fee=1, @excitement=:gentle, @min_height=24, @name="Carousel", @rider_log={}>
+
+pry(main)> ride2 = Ride.new({ name: 'Ferris Wheel', min_height: 36, admission_fee: 5, excitement: :gentle })
+#=> #<Ride:0x0000000159a0cd00 @admission_fee=5, @excitement=:gentle, @min_height=36, @name="Ferris Wheel", @rider_log={}>
+
+pry(main)> carnival.add_ride(ride1)
+
+pry(main)> carnival.add_ride(ride2)
+
+pry(main)> carnival.rides
+#=> [#<Ride:0x000000015a136ab8 @admission_fee=1, @excitement=:gentle, @min_height=24, @name="Carousel", @rider_log={}>, #<Ride:0x0000000159a0cd00 @admission_fee=5, @excitement=:gentle, @min_height=36, @name="Ferris Wheel", @rider_log={}>]
+```
+
 Additionally, use TDD to add the following functionality to the `Carnival` class. A passing challenge will complete *at least* two of the following. We recommend completing all three if you have time.
 
 1. A carnival can tell us its most popular ride. Most popular will be the ride that has been riden the most amount of times by all visitors (not based on unique riders).
 1. A carnival can tell us its most profitable ride
 1. A carnival can calculate the total revenue earned from all its rides.
+
+Use TDD to create a `Carnival` class that responds to the following interaction pattern:
+
+```ruby
+pry(main)> require './lib/carnival'
+#=> true
+
+pry(main)> require './lib/ride'
+#=> true
+
+pry(main)> require './lib/visitor'
+#=> true
+
+pry(main)> carnival = Carnival.new(14)
+#=> #<Carnival:0x000000015a136ab8 @duration=14, @rides=[]>
+
+pry(main)> ride1 = Ride.new({ name: 'Carousel', min_height: 24, admission_fee: 1, excitement: :gentle })
+#=> #<Ride:0x000000015a136ab8 @admission_fee=1, @excitement=:gentle, @min_height=24, @name="Carousel", @rider_log={}>
+
+pry(main)> ride2 = Ride.new({ name: 'Ferris Wheel', min_height: 36, admission_fee: 5, excitement: :gentle })
+#=> #<Ride:0x0000000159a0cd00 @admission_fee=5, @excitement=:gentle, @min_height=36, @name="Ferris Wheel", @rider_log={}>
+
+pry(main)> ride3 = Ride.new({ name: 'Roller Coaster', min_height: 54, admission_fee: 2, excitement: :thrilling })
+#=> #<Ride:0x0000000159ae7a68 @admission_fee=2, @excitement=:thrilling, @min_height=54, @name="Roller Coaster", @rider_log={}>
+
+pry(main)> visitor1 = Visitor.new('Bruce', 54, '$10')
+#=> #<Visitor:0x000000015a16e918 @height=54, @name="Bruce", @preferences=[], @spending_money=10>
+
+pry(main)> visitor2 = Visitor.new('Tucker', 36, '$5')
+#=> #<Visitor:0x000000015a11c5c8 @height=36, @name="Tucker", @preferences=[], @spending_money=5>
+
+pry(main)> visitor3 = Visitor.new('Penny', 64, '$15')
+#=> #<Visitor:0x0000000159a852a0 @height=64, @name="Penny", @preferences=[], @spending_money=15>
+
+pry(main)> visitor1.add_preference(:gentle)
+pry(main)> visitor2.add_preference(:gentle)
+pry(main)> visitor3.add_preference(:thrilling)
+
+pry(main)> ride1.board_rider(visitor1)
+pry(main)> ride1.board_rider(visitor2)
+pry(main)> ride1.board_rider(visitor1)
+pry(main)> ride2.board_rider(visitor1)
+pry(main)> ride3.board_rider(visitor3)
+
+pry(main)> carnival.add_ride(ride1)
+pry(main)> carnival.add_ride(ride2)
+pry(main)> carnival.add_ride(ride3)
+
+pry(main)> carnival.most_popular_ride
+#=>  @name="Carousel"
+
+pry(main)> carnival.most_profitable_ride
+#=>  @name="Ferris Wheel"
+
+pry(main)> carnival.total_revenue
+#=> 10 #Total revenue = $3 (from ride1) + $5 (from ride2) + $2 (from ride3) = $10.
+```
 
 | Method Name             | Return Value |
 |-------------            |--------------|
