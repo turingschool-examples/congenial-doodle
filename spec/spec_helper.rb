@@ -1,0 +1,5 @@
+require "pry"
+require "rspec"
+require "./lib/visitor.rb"
+require "./lib/ride.rb"
+require "./lib/carnival.rb"
